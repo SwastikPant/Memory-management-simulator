@@ -24,6 +24,8 @@ public:
 	size_t largest_free_block() const;
 	double external_fragmentation() const;
 	double memory_utilization() const;
+	void print_stats() const;
+
 };
 
 #endif

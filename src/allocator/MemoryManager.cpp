@@ -33,12 +33,7 @@ void MemoryManager::dump() const {
         curr = curr->next;
     }
 
-
-    std::cout << "\n--- Metrics ---\n";
-    std::cout << "Total free memory: " << total_free_memory() << "\n";
-    std::cout << "Largest free block: " << largest_free_block() << "\n";
-    std::cout << "External fragmentation: " << external_fragmentation() << "\n";
-    std::cout << "Memory utilization: " << memory_utilization() << "\n";
+    std::cout << std::dec;
 }
 
 MemoryBlock* MemoryManager::split_and_allocate(
@@ -215,5 +210,13 @@ double MemoryManager::memory_utilization() const {
     }
 
     return (double)used / total_memory;
+}
+
+void MemoryManager::print_stats() const {
+    std::cout << "--- Memory Stats ---\n";
+    std::cout << "Total free memory: " << total_free_memory() << "\n";
+    std::cout << "Largest free block: " << largest_free_block() << "\n";
+    std::cout << "External fragmentation: " << external_fragmentation() << "\n";
+    std::cout << "Memory utilization: " << memory_utilization() << "\n";
 }
 
