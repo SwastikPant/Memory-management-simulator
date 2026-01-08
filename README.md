@@ -4,12 +4,12 @@ A comprehensive user-space simulator that models how operating systems manage ph
 # Video
 This video showcases the various functions that have been incorporated in this simulator
 ```bash
-	https://drive.google.com/file/d/1uHfcS9eK97FwVZj5_RyZQlIQUtZzNGV2/view?usp=sharing
+https://drive.google.com/file/d/1uHfcS9eK97FwVZj5_RyZQlIQUtZzNGV2/view?usp=sharing
 ```
 
 # Overview
 The simulator implements a complete memory management pipeline:
-Virtual Address → Page Table → Physical Address → Cache (L1 → L2) → Physical Memory
+Virtual Address → Page Table → Physical Address → Cache (L1 → L2) → Physical Memory  
 This is a faithful conceptual simulation implemented in user space: not a real OS kernel, but an accurate representation of how these systems work.
 # Core Components
 ## Physical Memory Management
@@ -49,14 +49,18 @@ This is a faithful conceptual simulation implemented in user space: not a real O
 C++17 compatible compiler (tested with g++)
 
 ## Building
+```bash
 g++ -std=c++17 -Iinclude src/main.cpp src/allocator/*.cpp src/cache/*.cpp src/vm/*.cpp -o memory_sim
+```
 ## Running
 Interactive mode:  
+```bash
 ./memory_sim  
-  
+  ```
 Scripted workloads(Example):  
+```bash
 ./memory_sim < tests/allocator_basic.txt  
-  
+  ```
 # Command Reference
 
 **`init <size>`**  
@@ -108,6 +112,7 @@ memory-simulator/
 │   └── main.cpp       # CLI and main loop
 ├── include/           # Header files
 ├── tests/             # Scripted workload files
+├── logs/              # Outputs of the tests
 ├── DOCUMENTATION.md   # Detailed design documentation
 └── README.md
 
