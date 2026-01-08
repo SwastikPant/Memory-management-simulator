@@ -32,6 +32,7 @@ public:
 	double allocation_success_rate() const;
 	double allocation_failure_rate() const;
 	size_t internal_fragmentation() const;
+	size_t get_block_start(int block_id) const;
 
 };
 

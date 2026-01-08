@@ -245,6 +245,19 @@ size_t MemoryManager::internal_fragmentation() const {
     return 0;
 }
 
+size_t MemoryManager::get_block_start(int block_id) const {
+    MemoryBlock* curr = head;
+
+    while (curr) {
+        if (!curr->free && curr->block_id == block_id) {
+            return curr->start;
+        }
+        curr = curr->next;
+    }
+
+    return static_cast<size_t>(-1);
+}
+
 
 void MemoryManager::print_stats() const {
     std::cout << "--- Memory Stats ---\n";

@@ -1,0 +1,19 @@
+Memory Management Simulator
+Type 'help' to see available commands
+Type 'exit' to quit
+> Initialized memory with size 512
+> Allocated block id 1
+> Allocated block id 2
+> Allocation failed
+> Allocated block id 3
+> --- Memory Stats ---
+Total free memory: 62
+Largest free block: 62
+Memory utilization: 0.878906
+Allocation requests: 4
+Allocation failures: 1
+Allocation success rate: 75%
+Allocation failure rate: 25%
+Internal fragmentation: 0 bytes (exact-fit allocation)
+External fragmentation: 0
+> 

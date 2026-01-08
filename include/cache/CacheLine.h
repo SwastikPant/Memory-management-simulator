@@ -5,7 +5,7 @@
 
 struct CacheLine {
     size_t tag;
-    bool valid;
+    bool valid = false;
     size_t last_used;  
     size_t inserted_at; 
 

@@ -1,0 +1,27 @@
+Memory Management Simulator
+Type 'help' to see available commands
+Type 'exit' to quit
+> Initialized memory with size 1024
+> Allocated block id 1
+> Allocated block id 2
+> Allocated block id 3
+> [0x0000 - 0x0063] USED (id=1)
+[0x0064 - 0x012b] USED (id=2)
+[0x012c - 0x015d] USED (id=3)
+[0x015e - 0x03ff] FREE
+> Freed block 2
+> [0x0000 - 0x0063] USED (id=1)
+[0x0064 - 0x012b] FREE
+[0x012c - 0x015d] USED (id=3)
+[0x015e - 0x03ff] FREE
+> --- Memory Stats ---
+Total free memory: 874
+Largest free block: 674
+Memory utilization: 0.146484
+Allocation requests: 3
+Allocation failures: 0
+Allocation success rate: 100%
+Allocation failure rate: 0%
+Internal fragmentation: 0 bytes (exact-fit allocation)
+External fragmentation: 0.228833
+> 

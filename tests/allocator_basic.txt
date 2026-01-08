@@ -1,8 +1,14 @@
 init 1024
 alloc first 100
-alloc first 200
-alloc first 50
+alloc first 100
+alloc first 100
 dump
 free 2
+dump
+alloc best 30
+dump
+alloc worst 30
+dump
+free 4
 dump
 stats

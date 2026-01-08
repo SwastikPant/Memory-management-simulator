@@ -70,7 +70,7 @@ void VirtualMemoryManager::access(size_t virtual_address) {
 
         size_t phys_addr =
             phys_mem.get_block_start(pte.block_id) + offset;
-
+//std::cout << "Phys addr: " << phys_addr << "\n";
         cache.access(phys_addr);
         return;
     }
@@ -97,6 +97,7 @@ void VirtualMemoryManager::access(size_t virtual_address) {
 
     size_t phys_addr =
         phys_mem.get_block_start(block_id) + offset;
+   // std::cout << "Phys addr: " << phys_addr << "\n";
 
     cache.access(phys_addr);
 }

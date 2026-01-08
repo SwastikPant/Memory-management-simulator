@@ -1,0 +1,16 @@
+Memory Management Simulator
+Type 'help' to see available commands
+Type 'exit' to quit
+> Initialized memory with size 1024
+> [PAGE FAULT] Virtual page 0
+> > > > > > --- L1 Cache Stats ---
+Hits: 4
+Misses: 2
+Hit rate: 0.666667
+Average Memory Access Time: 4.33333 cycles
+--- L2 Cache Stats ---
+Hits: 0
+Misses: 2
+Hit rate: 0
+Average Memory Access Time: 11 cycles
+> 

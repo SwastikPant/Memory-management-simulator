@@ -1,0 +1,12 @@
+Memory Management Simulator
+Type 'help' to see available commands
+Type 'exit' to quit
+> Initialized memory with size 1024
+> [PAGE FAULT] Virtual page 0
+> [PAGE FAULT] Virtual page 1
+> [PAGE FAULT] Virtual page 2
+> > > --- Virtual Memory Stats ---
+Page faults: 3
+Page evictions: 0
+Resident pages: 3
+> 

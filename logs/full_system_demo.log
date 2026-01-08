@@ -1,0 +1,41 @@
+Memory Management Simulator
+Type 'help' to see available commands
+Type 'exit' to quit
+> Initialized memory with size 1024
+> Allocated block id 1
+> Allocated block id 2
+> Allocated block id 3
+> [PAGE FAULT] Virtual page 0
+> [PAGE FAULT] Virtual page 1
+> > > Freed block 1
+> [0x0000 - 0x0063] FREE
+[0x0064 - 0x012b] USED (id=2)
+[0x012c - 0x015d] USED (id=3)
+[0x015e - 0x025d] USED (id=4)
+[0x025e - 0x035d] USED (id=5)
+[0x035e - 0x03ff] FREE
+> --- Memory Stats ---
+Total free memory: 262
+Largest free block: 162
+Memory utilization: 0.744141
+Allocation requests: 5
+Allocation failures: 0
+Allocation success rate: 100%
+Allocation failure rate: 0%
+Internal fragmentation: 0 bytes (exact-fit allocation)
+External fragmentation: 0.381679
+> --- L1 Cache Stats ---
+Hits: 2
+Misses: 2
+Hit rate: 0.5
+Average Memory Access Time: 6 cycles
+--- L2 Cache Stats ---
+Hits: 0
+Misses: 2
+Hit rate: 0
+Average Memory Access Time: 11 cycles
+> --- Virtual Memory Stats ---
+Page faults: 2
+Page evictions: 0
+Resident pages: 2
+> 

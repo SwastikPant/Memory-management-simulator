@@ -1,5 +1,12 @@
 # Memory Management Simulator
 A comprehensive user-space simulator that models how operating systems manage physical memory, CPU caches and virtual memory. This educational tool demonstrates core OS memory management concepts through algorithmic correctness, realistic behavior, and clean modular design.
+
+# Video
+This video showcases the various functions that have been incorporated in this simulator
+```bash
+	https://drive.google.com/file/d/1uHfcS9eK97FwVZj5_RyZQlIQUtZzNGV2/view?usp=sharing
+```
+
 # Overview
 The simulator implements a complete memory management pipeline:
 Virtual Address → Page Table → Physical Address → Cache (L1 → L2) → Physical Memory
