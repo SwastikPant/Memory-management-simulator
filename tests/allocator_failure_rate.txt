@@ -1,0 +1,6 @@
+init 512
+alloc first 200
+alloc first 200
+alloc first 200
+alloc first 50
+stats

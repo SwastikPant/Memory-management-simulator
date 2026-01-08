@@ -1,0 +1,7 @@
+init 1024
+access 0
+access 256
+access 512
+access 0
+access 256
+vm_stats

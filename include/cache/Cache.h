@@ -20,6 +20,11 @@ private:
     size_t hits;
     size_t misses;
 
+    size_t hit_time;
+    size_t miss_penalty;
+    size_t total_accesses;
+    size_t total_cycles;
+
     Cache* next_level; 
 
 public:
@@ -33,6 +38,8 @@ public:
     void access(size_t address);
 
     void print_stats(const std::string& name) const;
+
+    double amat() const;
 };
 
 #endif

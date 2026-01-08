@@ -3,7 +3,11 @@
 #include <iomanip>
 
 MemoryManager::MemoryManager()
-    : head(nullptr), total_memory(0), next_block_id(1) {}
+    : head(nullptr),
+      total_memory(0),
+      next_block_id(1),
+      alloc_requests(0),
+      alloc_failures(0) {}
 
 MemoryManager::~MemoryManager() {
     MemoryBlock* curr = head;
@@ -67,6 +71,7 @@ MemoryBlock* MemoryManager::split_and_allocate(
 }
 
 int MemoryManager::allocate_first_fit(size_t req_size) {
+    alloc_requests++;
     MemoryBlock* curr = head;
 
     while (curr) {
@@ -75,11 +80,12 @@ int MemoryManager::allocate_first_fit(size_t req_size) {
         }
         curr = curr->next;
     }
-
+    alloc_failures++;
     return -1;
 }
 
 int MemoryManager::allocate_best_fit(size_t req_size) {
+    alloc_requests++;
     MemoryBlock* curr = head;
     MemoryBlock* best = nullptr;
     size_t best_diff = SIZE_MAX;
@@ -95,13 +101,16 @@ int MemoryManager::allocate_best_fit(size_t req_size) {
         curr = curr->next;
     }
 
-    if (!best)
+    if (!best){
+        alloc_failures++;
         return -1;
+    }
 
     return split_and_allocate(best, req_size)->block_id;
 }
 
 int MemoryManager::allocate_worst_fit(size_t req_size) {
+    alloc_requests++;
     MemoryBlock* curr = head;
     MemoryBlock* worst = nullptr;
     size_t worst_size = 0;
@@ -116,8 +125,10 @@ int MemoryManager::allocate_worst_fit(size_t req_size) {
         curr = curr->next;
     }
 
-    if (!worst)
+    if (!worst){
+        alloc_failures++;
         return -1;
+    }
 
     return split_and_allocate(worst, req_size)->block_id;
 }
@@ -159,7 +170,7 @@ bool MemoryManager::free_block(int block_id) {
         curr = curr->next;
     }
 
-    return false; // block ID not found
+    return false; //block ID not found
 }
 
 
@@ -212,11 +223,39 @@ double MemoryManager::memory_utilization() const {
     return (double)used / total_memory;
 }
 
+size_t MemoryManager::get_alloc_requests() const {
+    return alloc_requests;
+}
+
+size_t MemoryManager::get_alloc_failures() const {
+    return alloc_failures;
+}
+
+double MemoryManager::allocation_success_rate() const {
+    if (alloc_requests == 0) return 0.0;
+    return 1.0 - (double)alloc_failures / alloc_requests;
+}
+
+double MemoryManager::allocation_failure_rate() const {
+    if (alloc_requests == 0) return 0.0;
+    return (double)alloc_failures / alloc_requests;
+}
+
+size_t MemoryManager::internal_fragmentation() const {
+    return 0;
+}
+
+
 void MemoryManager::print_stats() const {
     std::cout << "--- Memory Stats ---\n";
     std::cout << "Total free memory: " << total_free_memory() << "\n";
     std::cout << "Largest free block: " << largest_free_block() << "\n";
-    std::cout << "External fragmentation: " << external_fragmentation() << "\n";
     std::cout << "Memory utilization: " << memory_utilization() << "\n";
+    std::cout << "Allocation requests: " << get_alloc_requests() << "\n";
+    std::cout << "Allocation failures: " << get_alloc_failures() << "\n";
+    std::cout << "Allocation success rate: "<< allocation_success_rate() *100 << "%\n";
+    std::cout << "Allocation failure rate: "<< allocation_failure_rate() * 100 << "%\n";
+    std::cout << "Internal fragmentation: " << internal_fragmentation() << " bytes (exact-fit allocation)\n";
+    std::cout << "External fragmentation: " << external_fragmentation() << "\n";
 }
 

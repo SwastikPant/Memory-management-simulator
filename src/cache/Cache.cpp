@@ -12,6 +12,10 @@ Cache::Cache(size_t csize,
       timestamp(0),
       hits(0),
       misses(0),
+      hit_time(1),
+      miss_penalty(10),
+      total_accesses(0),
+      total_cycles(0),
       next_level(nullptr) {
 
     num_sets = cache_size / (block_size * associativity);
@@ -21,12 +25,14 @@ Cache::Cache(size_t csize,
     }
 }
 
+
 void Cache::set_next_level(Cache* next) {
     next_level = next;
 }
 
 void Cache::access(size_t address) {
     timestamp++;
+    total_accesses++;
 
     size_t block_addr = address / block_size;
     size_t set_index = block_addr % num_sets;
@@ -37,13 +43,21 @@ void Cache::access(size_t address) {
 
     if (hit) {
         hits++;
+        total_cycles += hit_time;
     } else {
         misses++;
+        total_cycles += hit_time  + miss_penalty;
         if (next_level) {
             next_level->access(address);
         }
     }
 }
+
+double Cache::amat() const {
+    if (total_accesses == 0) return 0.0;
+    return (double)total_cycles / total_accesses;
+}
+
 
 void Cache::print_stats(const std::string& name) const {
     std::cout << "--- " << name << " Cache Stats ---\n";
@@ -55,4 +69,6 @@ void Cache::print_stats(const std::string& name) const {
         std::cout << "Hit rate: "
                   << (double)hits / total << "\n";
     }
+
+    std::cout << "Average Memory Access Time: " << amat() << " cycles\n";
 }

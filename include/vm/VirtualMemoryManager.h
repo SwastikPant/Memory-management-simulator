@@ -25,8 +25,8 @@ private:
     std::unordered_map<size_t, PageTableEntry> page_table;
     std::queue<size_t> fifo_queue;
 
-    size_t allocate_frame();
-    size_t evict_page();
+    int allocate_frame();
+    int evict_page();
 
 public:
     VirtualMemoryManager(MemoryManager& mm,

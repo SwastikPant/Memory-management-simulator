@@ -8,6 +8,8 @@ private:
 	MemoryBlock* head;
 	size_t total_memory;
 	int next_block_id;
+	size_t alloc_requests;
+	size_t alloc_failures;
 	MemoryBlock* split_and_allocate(MemoryBlock* block, size_t req_size);
 
 public:
@@ -25,6 +27,11 @@ public:
 	double external_fragmentation() const;
 	double memory_utilization() const;
 	void print_stats() const;
+	size_t get_alloc_requests() const;
+	size_t get_alloc_failures() const;
+	double allocation_success_rate() const;
+	double allocation_failure_rate() const;
+	size_t internal_fragmentation() const;
 
 };
 

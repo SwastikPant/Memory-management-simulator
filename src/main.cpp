@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 
+
 int main() {
     MemoryManager mm;
     bool initialized = false;
@@ -21,6 +22,8 @@ Cache L1(256, 64, 2, "LRU");  // 256B, 2-way
 VirtualMemoryManager vmm(mm, L1, 1024, "LRU");
 
 L1.set_next_level(&L2);
+
+
 
 
     while (true) {
